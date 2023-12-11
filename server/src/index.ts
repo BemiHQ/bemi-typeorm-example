@@ -1,10 +1,10 @@
 import cors from "cors";
 import express from "express";
+import { bemiMetadata as setContext } from "@bemi-db/typeorm";
 
 import { todoRouter } from "./routers/todo";
 import { AppDataSource } from "./data-source";
 import { BemiDataSource } from "./data-source-bemi";
-import { bemiMetadata } from "@bemi-db/typeorm";
 
 const main = async (): Promise<void> => {
   const app = express();
@@ -14,7 +14,7 @@ const main = async (): Promise<void> => {
   app.use(cors());
 
   app.use(
-    bemiMetadata(AppDataSource, (req) => ({
+    setContext(AppDataSource, (req) => ({
       apiEndpoint: req.url,
       userID: 187234,
       queryParams: req.query,

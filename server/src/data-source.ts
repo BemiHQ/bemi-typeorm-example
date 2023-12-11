@@ -4,11 +4,11 @@ import { Todo } from "./entities/Todo";
 
 export const AppDataSource = new DataSource({
   type: "postgres",
-  host: "localhost",
-  port: 5434,
-  username: "postgres",
-  password: undefined,
-  database: "bemi_dev_source",
+  host: process.env.SOURCE_DB_HOST,
+  port: parseInt(process.env.SOURCE_DB_PORT),
+  username: process.env.SOURCE_DB_USERNAME,
+  password: process.env.SOURCE_DB_PASSWORD,
+  database: process.env.SOURCE_DB_DATABASE,
   synchronize: true,
   logging: true,
   entities: [Todo],

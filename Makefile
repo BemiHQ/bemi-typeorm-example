@@ -21,11 +21,14 @@ reset:
 	devbox run "dropdb -p 5434 bemi_dev_source && createdb -p 5434 bemi_dev_source" && \
 		make migrate
 
+install:
+	devbox run "cd server && bun install && cd ../client && bun install"
+
 up:
 	devbox run "bun run concurrently \"make up-server\" \"make up-client\""
 
 up-server:
-	devbox run "cd server && bun --inspect src/index.ts"
+	devbox run --env-file ./server/.env "cd server && bun --inspect src/index.ts"
 
 up-client:
 	devbox run "cd client && PORT=4002 bun run react-scripts start"

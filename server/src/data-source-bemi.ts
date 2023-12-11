@@ -1,19 +1,16 @@
 import { DataSource } from "typeorm";
-import { Change } from "@bemi-db/typeorm";
+import { Change } from "@bemi-db/typeorm/src/entities/Change";
 
 export const BemiDataSource = new DataSource({
   type: "postgres",
   name: "bemiRead",
-  host: "us-west-1-prod-destination-pool.ctbxbtz4ojdc.us-west-1.rds.amazonaws.com",
-  port: 5432,
-  username: "u_9adb30103a55",
-  password: "password",
-  database: "db_9adb30103a55",
+  host: process.env.DESTINATION_DB_HOST,
+  port: parseInt(process.env.DESTINATION_DB_PORT),
+  username: process.env.DESTINATION_DB_USERNAME,
+  password: process.env.DESTINATION_DB_PASSWORD,
+  database: process.env.DESTINATION_DB_DATABASE,
   synchronize: false,
   logging: true,
   entities: [Change],
   migrations: [],
-  ssl: {
-    rejectUnauthorized: false,
-  },
 });

@@ -18,11 +18,13 @@ See the documentation here https://github.com/BemiHQ/typeorm
 make init
 make up-services
 make create
+cp server/.env.sample server/.env
 ```
 
 ## Development
 
 ```
+make install
 make migrate
 make up
 ```
