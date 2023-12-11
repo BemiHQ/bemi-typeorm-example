@@ -1,5 +1,5 @@
 import { DataSource } from "typeorm";
-import { Change } from "@bemi/typeorm";
+import { Change } from "@bemi-db/typeorm";
 
 export const BemiDataSource = new DataSource({
   type: "postgres",

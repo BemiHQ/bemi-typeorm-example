@@ -4,7 +4,7 @@ import express from "express";
 import { todoRouter } from "./routers/todo";
 import { AppDataSource } from "./data-source";
 import { BemiDataSource } from "./data-source-bemi";
-import { bemiMetadata } from "@bemi/typeorm";
+import { bemiMetadata } from "@bemi-db/typeorm";
 
 const main = async (): Promise<void> => {
   const app = express();
