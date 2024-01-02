@@ -1,10 +1,6 @@
 # Bemi TypeORM Example
 
-## Demo
-
-[![](images/demo.png)](https://www.youtube.com/watch?v=7xTLGavH6Ak)
-
-See the documentation here https://github.com/BemiHQ/typeorm
+You can find a demo and detailed documentation here https://docs.bemi.io.
 
 ## System dependencies
 

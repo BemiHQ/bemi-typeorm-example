@@ -1,6 +1,6 @@
 import cors from "cors";
-import express from "express";
-import { bemiMetadata as setContext } from "@bemi-db/typeorm";
+import express, { Request } from "express";
+import { setContext } from "@bemi-db/typeorm";
 
 import { todoRouter } from "./routers/todo";
 import { AppDataSource } from "./data-source";
@@ -14,26 +14,18 @@ const main = async (): Promise<void> => {
   app.use(cors());
 
   app.use(
-    setContext(AppDataSource, (req) => ({
+    setContext(AppDataSource, (req: Request) => ({
       apiEndpoint: req.url,
-      userID: 187234,
-      queryParams: req.query,
+      userId: (req as any).user?.id || 1,
+      params: req.body,
     }))
   );
 
-  AppDataSource.initialize()
-    .then(() => {
-      console.log("Connected to Postgres");
-    })
-    .catch((error) => console.log(error));
+  AppDataSource.initialize().then(() => { console.log("Connected to Postgres"); })
+    .catch((error) => { console.log(error) });
+  BemiDataSource.initialize().then(() => { console.log("Connected to Bemi"); })
+    .catch((error) => { console.log(error) });
 
-  BemiDataSource.initialize()
-    .then(() => {
-      console.log("Connected to Bemi");
-    })
-    .catch((error) => {
-      console.log(error);
-    });
   app.use("/", todoRouter);
 
   app.listen(port, (): void => {

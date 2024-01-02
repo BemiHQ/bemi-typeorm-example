@@ -22,7 +22,7 @@ const Todo = (
           mr={1}
           onChange={(e) => handleUpdate(e, todo.id)}
         ></Checkbox>
-        <DeleteIcon color="gray" onClick={() => handleDelete(todo.id)} />
+        <DeleteIcon color="gray" onClick={() => handleDelete(todo.id)} style={{ cursor: 'pointer' }} />
       </HStack>
     </Box>
   );
