@@ -1,6 +1,6 @@
 {
   "dependencies": {
-    "@bemi-db/typeorm": "^1.0.2"
+    "@bemi-db/typeorm": "^1.2.0"
   },
   "devDependencies": {
     "concurrently": "^8.2.2"

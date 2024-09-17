@@ -13,4 +13,5 @@ export const AppDataSource = new DataSource({
   logging: true,
   entities: [Todo],
   migrations: [__dirname + "/migrations/**/*.ts"],
+  ssl: false,
 });
